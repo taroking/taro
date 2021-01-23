@@ -1,27 +1,28 @@
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 #include <SPI.h>
+
 #include <Adafruit_GFX.h>
 #include <Max72xxPanel.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClientSecureBearSSL.h>
 
-#define UID "12"
-int pinCS = D4; // Attach CS to this pin, DIN to MOSI and CLK to SCK (cf http://arduino.cc/en/Reference/SPI )
+#define UID "████████"
+int pinCS = 15; // Attach CS to this pin, DIN to MOSI and CLK to SCK (cf http://arduino.cc/en/Reference/SPI )
 /**
  * ESP8266 Pin
- * D4 -> CS    -> CS
+ * 15 -> CS    -> CS  (this is for HACK_CLOCK)
  * D5 -> HSCLK -> CLK
  * D7 -> HMOSI -> DIN
  */
 int numberOfHorizontalDisplays = 4;
 int numberOfVerticalDisplays = 1;
-#define _DISPLAY_ROTATE 1
+#define _DISPLAY_ROTATE 3
 
 Max72xxPanel matrix = Max72xxPanel(pinCS, numberOfHorizontalDisplays, numberOfVerticalDisplays);
 
 #ifndef STASSID
-#define STASSID "█████████████████"
+#define STASSID "█████████"
 #define STAPSK  "█████████"
 #endif
 
@@ -345,15 +346,3 @@ void loop() {
     matrix.write(); // Send bitmap to display
     delay(1000);
 }
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
